@@ -7,6 +7,8 @@ import * as yup from "yup";
 import { Container, LoginContainer, Column, Spacing, Title } from "./styles";
 import { defaultValues, IFormLogin } from "./types";
 
+
+
 const schema = yup
   .object({
     email: yup.string().email("E-mail inválido").required("Campo obrigatório"),
@@ -18,16 +20,7 @@ const schema = yup
   .required();
 
 const Login = () => {
-  const {
-    control,
-    formState: { errors, isValid },
-  } = useForm<IFormLogin>({
-    resolver: yupResolver(schema),
-    mode: "onBlur",
-    defaultValues,
-    reValidateMode: "onChange",
-  });
-
+  const { control, formState: { errors, isValid }} = useForm<IFormLogin>({ resolver: yupResolver(schema), mode: "onBlur", defaultValues, reValidateMode: "onChange",});
   return (
     <Container>
       <LoginContainer>
